@@ -8,6 +8,19 @@ class Hotels {
         this.initHotels();
     }
 
+    //@private
+    initHotels() {
+        const search = this.search;
+        $('.city-input-form').on('submit', (event) => {
+            event.preventDefault();
+            const city = $('#my_search').val(),
+                hotels = search.getHotels(city);
+            if (hotels.length !== 0) {
+                this.createHotelsTable(hotels, city);
+            }
+        })
+    }
+
     // @private
     setActiveRow() {
         $(".hotels-table tr").on('click', function (e) {
@@ -30,7 +43,7 @@ class Hotels {
         hotels.forEach(
             (item, index) => {
                 const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">')
-                        .tooltip(),
+                        .customTooltip(),
                     nameCell = $('<td>').html('<h4>' + item.name + '</h4>'),
                     imgCell = $('<td>').html('<img src="' + item.imageUrl + '">');
                 row.append(nameCell, imgCell);
@@ -40,18 +53,5 @@ class Hotels {
         tbl.append(tblBody);
         $('.hotels-table-container').append(tbl);
         this.setActiveRow();
-    }
-
-    //@private
-    initHotels() {
-        const search = this.search;
-        $('.city-input-form').on('submit', (event) => {
-            event.preventDefault();
-            const city = $('#my_search').val(),
-                hotels = search.getHotels(city);
-            if (hotels.length !== 0) {
-                this.createHotelsTable(hotels, city);
-            }
-        })
     }
 }

@@ -18,6 +18,7 @@ class Index {
         const hotels = new Hotels(search);
         search.init();
         hotels.init();
+        // $.override
     }
 }
 

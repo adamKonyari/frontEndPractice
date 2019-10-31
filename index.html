@@ -5,13 +5,14 @@
     <title>Front End Practice</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <script src="js/jquery-3.4.1.js"></script>
-    <script src="js/bloodhound.js"></script>
-    <script src="js/typeahead.jquery.js"></script>
-    <script src="js/bootstrap.js"></script>
+    <script src="js/lib/jquery-3.4.1.js"></script>
+    <script src="js/lib/bloodhound.js"></script>
+    <script src="js/lib/typeahead.jquery.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
     <script src="js/search.js"></script>
     <script src="js/hotels.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/test.js"></script>
 </head>
 <body data-spy="scroll" data-target="#navbar-main">
 <nav id="navbar-main" class="navbar navbar-default navbar-fixed-top">
@@ -31,16 +32,34 @@
 <hr>
 <hr>
 
-<div id="main-div">
+<div id="main-div container-fluid">
     <h4 id="search">Kereső</h4>
-    <form class="city-input-form">
-        <input type="text" id="my_search" name="search" class="form-control">
-        <input type="submit" value="GO">
-    </form>
-    <hr>
-    <div class="hotels-table-container" tabindex="-1">
+    <div class="search-container container-fluid">
+        <form class="city-input-form" autocomplete="off">
+            <input type="text" id="my_search" name="search" class="city-search form-control">
+            <input type="submit" value="GO">
+        </form>
+        <hr>
+        <div class="hotels-table-container" tabindex="-1"></div>
+        <hr>
+        <!-- MODAL POPUP -->
+        <div class="modal" id="modalDiv">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">MAP</h2>
+                    </div>
+                    <div class="modal-body">
+                        <p>asdasdasd</p>
+                        <p>asdasdasd</p>
+                        <p>asdasdasd</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MODAL -->
+        <a href="#" data-toggle="modal" data-target="#modalDiv" class="glyphicon-map-marker">MODAL</a>
     </div>
-    <hr>
     <h4 id="subscribe">Hírlevél</h4>
     <p>Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
         source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of
