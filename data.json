@@ -8,22 +8,38 @@
         {
           "id": 1,
           "name": "Four Seasons",
-          "imageUrl": "https://static.travelweekly.com/i/sized/780/437/www.cfmedia.vfmleonardo.com/imageRepo/4/0/60/174/148/exterior_BUD_311_S.jpg"
+          "imageUrl": "https://static.travelweekly.com/i/sized/780/437/www.cfmedia.vfmleonardo.com/imageRepo/4/0/60/174/148/exterior_BUD_311_S.jpg",
+          "coordinates": {
+            "lat": 47.499854,
+            "lng": 19.047944
+          }
         },
         {
           "id": 2,
           "name": "New York",
-          "imageUrl": "https://q-cf.bstatic.com/images/hotel/max1024x768/137/137678325.jpg"
+          "imageUrl": "https://q-cf.bstatic.com/images/hotel/max1024x768/137/137678325.jpg",
+          "coordinates": {
+            "lat": 47.498597,
+            "lng": 19.070518
+          }
         },
         {
           "id": 3,
-          "name": "Grand Budapest Hotel",
-          "imageUrl": "https://s3-eu-west-2.amazonaws.com/folio-website-images/content/uploads/2018/07/25093042/James-Gilleard-Grand-Budapest.jpg"
+          "name": "Hilton Budapest",
+          "imageUrl": "https://media.cntraveler.com/photos/53daeab6dcd5888e145d5ca5/master/pass/hilton-budapest-budapest-hungary-106372-1.jpg",
+          "coordinates": {
+            "lat": 47.502787,
+            "lng": 19.033565
+          }
         },
         {
           "id": 4,
           "name": "Mariott Budapest",
-          "imageUrl": "https://budapest-marriott-hotel.hotel-ds.com/data/Photos/940x500/7857/785791/785791038.JPEG"
+          "imageUrl": "https://budapest-marriott-hotel.hotel-ds.com/data/Photos/940x500/7857/785791/785791038.JPEG",
+          "coordinates": {
+            "lat": 47.495026,
+            "lng": 19.049723
+          }
         }
       ]
     },

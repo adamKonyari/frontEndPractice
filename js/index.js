@@ -1,6 +1,9 @@
 class Index {
     constructor() {
         const self = this;
+        this.search = new Search();
+        this.hotels = new Hotels(this.search);
+        this.customMap = new CustomMap();
         $(function () {
             self.init();
         })
@@ -10,16 +13,19 @@ class Index {
         this.initIndex();
     }
 
-     initIndex() {
-        $('#navbar-main').on('activate.bs.scrollspy', function (e) {
-            console.log(e.target.innerText);
-        });
-        const search = new Search();
-        const hotels = new Hotels(search);
-        search.init();
-        hotels.init();
-        // $.override
+    initIndex() {
+        $(document).ready(() => {
+            $('#navbar-main').on('activate.bs.scrollspy', function (e) {
+                console.log(e.target.innerText);
+            });
+            $(window).bind('gMapsLoaded', this.customMap.init);
+            this.customMap.loadGoogleMaps();
+            this.search.init();
+            this.hotels.init();
+        })
     }
 }
 
 new Index();
+
+
