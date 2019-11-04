@@ -4,6 +4,7 @@ class Index {
         this.search = new Search();
         this.customMap = new CustomMap(this.search);
         this.hotels = new Hotels(this.search, this.customMap);
+        this.subscribe = new Subscribe();
         $(function () {
             self.init();
         })
@@ -22,6 +23,7 @@ class Index {
             this.customMap.loadGoogleMaps();
             this.search.init();
             this.hotels.init();
+            this.subscribe.init();
         })
     }
 }

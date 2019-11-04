@@ -10,144 +10,103 @@
     <script src="js/lib/bloodhound.js"></script>
     <script src="js/lib/typeahead.jquery.js"></script>
     <script src="js/lib/bootstrap.js"></script>
+    <script src="js/lib/jquery.validate.js"></script>
     <script src="js/test.js"></script>
     <script src="js/search.js"></script>
     <script src="js/hotels.js"></script>
     <script src="js/map.js"></script>
+    <script src="js/subscribe.js"></script>
     <script src="js/index.js"></script>
 </head>
 
 <body data-spy="scroll" data-target="#navbar-main">
-    <nav id="navbar-main" class="navbar navbar-default navbar-fixed-top">
-        <a href="#" class="navbar-brand">Home</a>
-        <ul class="nav nav-pills">
-            <li class="nav-item">
-                <a href="#search" class="nav-link">Kereső</a>
-            </li>
-            <li class="nav-item">
-                <a href="#subscribe" class="nav-link">Hírlevél</a>
-            </li>
-            <li class="nav-item">
-                <a href="#recommendation" class="nav-link">Ajánló</a>
-            </li>
-        </ul>
-    </nav>
-    <hr>
-    <hr>
+<nav id="navbar-main" class="navbar navbar-default navbar-fixed-top">
+    <a href="#" class="navbar-brand">Home</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a href="#search" class="nav-link">Kereső</a>
+        </li>
+        <li class="nav-item">
+            <a href="#subscribe" class="nav-link">Hírlevél</a>
+        </li>
+        <li class="nav-item">
+            <a href="#recommendation" class="nav-link">Ajánló</a>
+        </li>
+    </ul>
+</nav>
+<hr>
+<hr>
 
-    <div id="main-div container-fluid">
+<div id="main-div container-fluid">
+    <div class="search-container container-fluid">
         <h4 id="search">Kereső</h4>
-        <div class="search-container container-fluid">
-            <form class="city-input-form" autocomplete="off">
-                <input type="text" id="my_search" name="search" class="city-search form-control">
-                <input type="submit" value="GO">
-            </form>
-            <hr>
-            <div class="hotels-table-container" tabindex="-1"></div>
-            <hr>
-            <!-- MODAL BEGIN -->
-            <div class="modal" id="modal-div">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h2 class="modal-title">MAP</h2>
-                        </div>
-                        <div class="modal-body">
-                            <!-- Google Map BEGIN -->
-                            <div id="map"></div>
-                            <!-- Google Map END -->
-                        </div>
+        <form class="city-input-form" autocomplete="off">
+            <input type="text" id="my_search" name="search" class="city-search form-control">
+            <input type="submit" value="GO">
+        </form>
+        <hr>
+        <div class="hotels-table-container" tabindex="-1"></div>
+        <hr>
+        <!-- MODAL BEGIN -->
+        <div class="modal" id="modal-map-div">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="font-size: 40pt">&times;</span>
+                        </button>
+                        <h2 class="modal-title">MAP</h2>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Google Map BEGIN -->
+                        <div id="map"></div>
+                        <!-- Google Map END -->
                     </div>
                 </div>
             </div>
-            <!-- MODAL END -->
-            <a id="map-modal-link" href="#" data-toggle="modal" data-target="#modal-div" class="">MODAL</a>
         </div>
+        <!-- MODAL END -->
+        <button id="map-modal-link" data-toggle="modal" data-target="#modal-map-div" class="btn btn-primary">
+            CITY MAP
+        </button>
+    </div>
+    <div class="subscribe-container container-fluid">
         <h4 id="subscribe">Hírlevél</h4>
-        <p>Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
-            undoubtable
-            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-            Extremes of
-            Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
-            during
-            the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-            section
-            1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
-            classical
-            Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
-            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
-            Lorem
-            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-            Extremes of
-            Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
-            during
-            the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-            section
-            1.10.32.Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
-            the
-            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
-            (The
-            Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,
-            very
-            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
-            line
-            in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-            piece of
-            classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor
-            at
-            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
-            Lorem
-            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-            Extremes of
-            Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
-            during
-            the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-            section
-            1.10.32.Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
-            the
-            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
-            (The
-            Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,
-            very
-            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
-            line
-            in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-            piece of
-            classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor
-            at
-            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
-            Lorem
-            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-            Extremes of
-            Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
-            during
-            the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-            section
-            1.10.32.Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
-            the
-            undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum"
-            (The
-            Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics,
-            very
-            popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a
-            line
-            in section 1.10.32.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a
-            piece of
-            classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor
-            at
-            Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
-            Lorem
-            Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable
-            source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The
-            Extremes of
-            Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular
-            during
-            the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in
-            section
-            1.10.32.</p>
+        <button id="subscribe-modal-link" class="btn btn-primary" data-target="#modal-subscribe-div">SUBSCRIBE</button>
+        <!-- MODAL BEGIN -->
+        <div class="modal" id="modal-subscribe-div">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" style="font-size: 40pt">&times;</span>
+                        </button>
+                        <h2 class="modal-title">SUBSCRIBE</h2>
+                    </div>
+                    <div class="modal-body">
+                        <!--Subscribe Form BEGIN-->
+                        <form id="subscribe-form">
+                            <div class="form-group">
+                                <label for="first-name">First Name:</label>
+                                <input type="text" class="form-control" id="first-name" name="first-name" placeholder="Enter first name">
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name:</label>
+                                <input type="text" class="form-control" id="last-name" name="last-name" placeholder="Enter last name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                            </div>
+                        </form>
+                        <!--Subscribe Form END-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MODAL END -->
+    </div>
+    <div class="recommendation-div container-fluid">
         <h4 id="recommendation">Ajánló</h4>
         <p>Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the
             undoubtable
@@ -234,6 +193,7 @@
             section
             1.10.32.</p>
     </div>
+</div>
 </body>
 
 </html>

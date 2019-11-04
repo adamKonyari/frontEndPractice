@@ -63,7 +63,11 @@
         {
           "id": 1,
           "name": "City Hotel",
-          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnuBpnDvI_bjnzaHoWx0y5xvGk9wVFXaNMgs76kHcDdrRf7tfj"
+          "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSnuBpnDvI_bjnzaHoWx0y5xvGk9wVFXaNMgs76kHcDdrRf7tfj",
+          "coordinates": {
+            "lat": 48.093275,
+            "lng": 20.785454
+          }
         }
       ]
     },

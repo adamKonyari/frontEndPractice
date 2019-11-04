@@ -1,0 +1,42 @@
+class Subscribe {
+    constructor() {
+    }
+
+    init() {
+        this.initSubscribe();
+    }
+
+    initSubscribe() {
+        this.initCustomModal();
+    }
+
+    /**
+     * extend syantax:
+     * $.fn.myPlugin = $.extend(true, $.fn.originalPlugin, myplugin)
+     */
+
+    initCustomModal() {
+        const modal = $.fn.modal,
+            defaults = $.extend({}, $.fn.modal.defaults);
+        $.fn.customModal = function(options) {
+            options = $.extend( defaults, options );
+            console.log('custom modal called');
+            return modal.call( this, options );
+        };
+        $('#subscribe-modal-link').on('click', () => {
+            $('#modal-subscribe-div').customModal();
+        });
+        $("#subscribe-form").validate({
+            rules: {
+                "first-name": {
+                    required: true,
+                    minlength: 3
+                },
+                "last-name": {
+                    required: true,
+                    minlength: 3
+                }
+            }
+        });
+    }
+}
