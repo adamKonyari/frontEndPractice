@@ -1,7 +1,7 @@
 class Hotels {
-    constructor(search) {
+    constructor(search, customMap) {
         this.search = search;
-        // this.cityToFind;
+        this.customMap = customMap;
     }
 
     init() {
@@ -20,6 +20,9 @@ class Hotels {
             if (hotels.length !== 0) {
                 this.initCustomTooltip();
                 this.createHotelsTable(hotels, city);
+                $('#modal-div').on('show.bs.modal', (city) => {
+                    this.customMap.addAllMarkers(hotels);
+                });
             }
         })
     }
@@ -44,9 +47,9 @@ class Hotels {
      */
     setActiveRow() {
         $(".hotels-table tr").on('click', function (e) {
-            $(".hotels-table tr").removeClass();
-            $(this).addClass('active-row').nextAll().addClass('rows-after');
-        }
+                $(".hotels-table tr").removeClass();
+                $(this).addClass('active-row').nextAll().addClass('rows-after');
+            }
         );
         $('.hotels-table-container').on('focusout', function () {
             $(".hotels-table tr").removeClass();
@@ -65,8 +68,10 @@ class Hotels {
         hotels.forEach(
             (item, index) => {
                 const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">')
-                    .customTooltip(),
-                    hotelName = $('<h4>').text(item.name).on('click', () => { alert('ok') }),
+                        .customTooltip(),
+                    hotelName = $('<h4>').text(item.name).on('click', () => {
+                        alert('ok')
+                    }),
                     nameCell = $('<td>').html(hotelName),
                     imgCell = $('<td>').html('<img src="' + item.imageUrl + '">');
                 row.append(nameCell, imgCell);
