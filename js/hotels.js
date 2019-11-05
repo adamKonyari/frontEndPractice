@@ -68,7 +68,7 @@ class Hotels {
         hotels.forEach((item, index) => {
             const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">')
                     .customTooltip(),
-                hotelName = $('<h4 data-toggle="modal" data-target="#modal-div">')
+                hotelName = $('<h4 data-toggle="modal" data-target="#modal-map-div">')
                     .text(item.name)
                     .on('click', () => {
                         this.customMap.addAllMarkers([item]);

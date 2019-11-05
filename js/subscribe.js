@@ -17,15 +17,30 @@ class Subscribe {
      */
 
     initCustomModal() {
-        const modal = $.fn.modal,
-            defaults = $.extend({}, $.fn.modal.defaults);
-        $.fn.customModal = function (options) {
-            options = $.extend(defaults, options);
-            console.log('custom modal called');
-            return modal.call(this, options);
-        };
+        (function ($) {
+            const modal = $.fn.modal;
+            $.fn.customModal = function (options) {
+                modal.apply(this);
+                const settings = $.extend({
+                    color: 'black'
+                }, options)
+                return this.css('color', settings.color);
+            };
+        }(jQuery));
+
+        // (function ($) {
+        //     const custommodal = function() {
+        //         console.log('custom called');
+        //         this.css('color', 'green');
+        //     }
+        //     $.fn.customModal = $.extend(true, $.fn.modal, custommodal);
+        //
+        // }(jQuery));
+
         $('#subscribe-modal-link').on('click', () => {
-            $('#modal-subscribe-div').customModal();
+            $('#modal-subscribe-div').customModal({
+                color: 'green'
+            });
         });
     }
 
@@ -34,23 +49,33 @@ class Subscribe {
         $("#subscribe-form")
             .validate({
                 rules: {
-                    "first-name": {
+                    first_name: {
                         required: true,
                         minlength: 3
                     },
-                    "last-name": {
+                    last_name: {
                         required: true,
                         minlength: 3
                     },
                     email: {
                         required: true
                     }
+                },
+
+                submitHandler: (form) => {
+                    $.ajax({
+                        url: 'http://localhost:3001/subscribers',
+                        type: 'POST',
+                        data: $('#subscribe-form').serialize(),
+                        dataType: 'json',
+                        success: () => {
+                            console.log('subscriber saved');
+                        },
+                        error: () => {
+                            console.log('error');
+                        }
+                    });
                 }
             });
-
-        $("#subscribe-form").on('submit', (e) => {
-            e.preventDefault();
-            console.log('form ok');
-        });
     }
 }

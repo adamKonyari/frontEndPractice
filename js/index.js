@@ -5,6 +5,7 @@ class Index {
         this.customMap = new CustomMap(this.search);
         this.hotels = new Hotels(this.search, this.customMap);
         this.subscribe = new Subscribe();
+        this.gallery = new Gallery();
         $(function () {
             self.init();
         })
@@ -24,6 +25,7 @@ class Index {
             this.search.init();
             this.hotels.init();
             this.subscribe.init();
+            this.gallery.init();
         })
     }
 }
