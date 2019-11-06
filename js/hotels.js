@@ -20,7 +20,7 @@ class Hotels {
             if (hotels.length !== 0) {
                 this.initCustomTooltip();
                 this.createHotelsTable(hotels, city);
-                $('#map-modal-link').on('click', city => {
+                $('#modal-map-div').on('show.bs.modal', city => {
                     this.customMap.addAllMarkers(hotels);
                 });
             }

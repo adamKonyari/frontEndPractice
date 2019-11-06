@@ -38,6 +38,8 @@ div#map {
     width: 200px;
     height: 200px;
     overflow: hidden;
+    border-radius: 20px;
+    margin: 10px;
 }
 
 .boxed-img {
@@ -47,4 +49,23 @@ div#map {
     right: -9999px;
     bottom: -9999px;
     margin: auto;
+}
+
+.recommendation-div {
+    width: 690px;
+}
+
+.zoom:hover {
+    transition: transform .3s;
+    transform: scale(1.5);
+}
+
+.rotate-left:hover {
+    transition: transform .3s;
+    transform: rotate(-40deg) scale(1.5);
+}
+
+.rotate-right:hover {
+    transition: transform .3s;
+    transform: rotate(40deg) scale(1.5);
 }

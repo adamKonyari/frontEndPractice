@@ -70,6 +70,7 @@ class Subscribe {
                         dataType: 'json',
                         success: () => {
                             console.log('subscriber saved');
+                            $('#modal-subscribe-div').modal('toggle');
                         },
                         error: () => {
                             console.log('error');

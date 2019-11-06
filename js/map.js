@@ -16,7 +16,6 @@ class CustomMap {
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
     }
 
-
     /**
      * @public
      */
@@ -35,10 +34,13 @@ class CustomMap {
      * @private
      * @param coordinates
      */
-    addMarker(coordinates) {
+    addMarker(hotel) {
+        const baseUrl = 'https://maps.google.com/mapfiles/kml/paddle/';
+        const firstLetter = hotel.name.charAt(0);
         const marker = new google.maps.Marker({
-            position: coordinates,
+            position: hotel.coordinates,
             map: map,
+            icon: baseUrl + firstLetter + '.png'
         });
         // map.setCenter(marker.getPosition());
         this.markers.push(marker);
@@ -50,20 +52,22 @@ class CustomMap {
      */
     addAllMarkers(hotels) {
         this.deleteMarkers();
+
         for (let i = 0; i < hotels.length; i++) {
             const hotel = hotels[i];
             if (hotel.coordinates) {
-                this.addMarker(hotel.coordinates)
+                this.addMarker(hotel);
             }
         }
-        map.setCenter(this.calcCenter(hotels));
+        this.fitMarkers();
+        // map.setCenter(this.calcCenter(hotels));
     }
 
     /**
      * @private
      */
     deleteMarkers() {
-        for(let i = 0; i < this.markers.length; i++) {
+        for (let i = 0; i < this.markers.length; i++) {
             this.markers[i].setMap(null);
         }
         this.markers = [];
@@ -75,8 +79,8 @@ class CustomMap {
      * @private
      */
     calcCenter(hotels) {
-        let sumLat = 0;
-        let sumLng = 0;
+        let sumLat = 0,
+            sumLng = 0;
         for (let i = 0; i < hotels.length; i++) {
             const hotel = hotels[i];
             sumLat += hotel.coordinates.lat;
@@ -86,5 +90,15 @@ class CustomMap {
             lat: sumLat / hotels.length,
             lng: sumLng / hotels.length
         }
+    }
+
+    fitMarkers() {
+        const bounds = new google.maps.LatLngBounds();
+        for (let i = 0; i < this.markers.length; i++) {
+            bounds.extend(this.markers[i].getPosition());
+        }
+        google.maps.event.addListenerOnce(map, 'idle', function() {
+            map.fitBounds(bounds);
+        });
     }
 }
