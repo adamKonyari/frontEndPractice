@@ -12,7 +12,21 @@
           "coordinates": {
             "lat": 47.499854,
             "lng": 19.047944
-          }
+          },
+          "prizes": [
+            {
+              "value": 5,
+              "person": 2
+            },
+            {
+              "value": 4,
+              "person": 2
+            },
+            {
+              "value": 4,
+              "person": 3
+            }
+          ]
         },
         {
           "id": 2,
@@ -21,7 +35,17 @@
           "coordinates": {
             "lat": 47.498597,
             "lng": 19.070518
-          }
+          },
+          "prizes": [
+            {
+              "value": 4,
+              "person": 2
+            },
+            {
+              "value": 3,
+              "person": 2
+            }
+          ]
         },
         {
           "id": 3,
@@ -30,7 +54,21 @@
           "coordinates": {
             "lat": 47.502787,
             "lng": 19.033565
-          }
+          },
+          "prizes": [
+            {
+              "value": 5,
+              "person": 2
+            },
+            {
+              "value": 4,
+              "person": 2
+            },
+            {
+              "value": 3,
+              "person": 4
+            }
+          ]
         },
         {
           "id": 4,
@@ -39,7 +77,21 @@
           "coordinates": {
             "lat": 47.495026,
             "lng": 19.049723
-          }
+          },
+          "prizes": [
+            {
+              "value": 3,
+              "person": 2
+            },
+            {
+              "value": 2,
+              "person": 3
+            },
+            {
+              "value": 4,
+              "person": 2
+            },
+          ]
         }
       ]
     },

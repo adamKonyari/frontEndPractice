@@ -25,12 +25,14 @@ class Gallery {
      */
     fillGallery() {
         const galleryDiv = $('.gallery-div');
+
         for (let i = 0; i < 15; i++) {
             const width = Math.floor((Math.random() * 300) + 200),
                 height = Math.floor((Math.random() * 300) + 200),
                 src = 'http://placekitten.com/' + width + '/' + height,
                 img = $('<img>').attr('src', src),
                 div = $('<div>').addClass('col-xs-3 img-container');
+            
             div.append(img);
             galleryDiv.append(div);
         }
@@ -38,4 +40,4 @@ class Gallery {
         galleryDiv.find('div:nth-child(3n+2) img').addClass('boxed-img zoom');
         galleryDiv.find('div:nth-child(3n+3) img').addClass('boxed-img rotate-right');
     }
-}
+}   

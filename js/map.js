@@ -57,11 +57,11 @@ class CustomMap {
      */
     addMarker(hotel) {
         const baseUrl = 'https://maps.google.com/mapfiles/kml/paddle/',
-            firstLetter = hotel.name.charAt(0),
+            firstChar = hotel.name.charAt(0),
             marker = new google.maps.Marker({
                 position: hotel.coordinates,
                 map: map,
-                icon: baseUrl + firstLetter + '.png'
+                icon: baseUrl + firstChar + '.png'
             });
         // map.setCenter(marker.getPosition());
         this.markers.push(marker);
