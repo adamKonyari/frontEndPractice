@@ -1,14 +1,22 @@
 class Hotels {
     constructor(search, customMap) {
-        this.search = search;
-        this.customMap = customMap;
+        this.init(search, customMap);
     }
 
-    init() {
+    /**
+     * @private
+     * @param search
+     * @param customMap
+     */
+    init(search, customMap) {
+        this.search = search;
+        this.customMap = customMap;
         this.initHotels();
     }
 
     /**
+     * the function builds hotels table if the city's name is correct
+     * custom tooltip and map markers on modal popup are also set here
      * @private
      */
     initHotels() {
@@ -28,7 +36,7 @@ class Hotels {
     }
 
     /**
-     * function that initializes the extended tooltip function
+     * function that initializes the extended tooltip plugin
      * @private
      */
     initCustomTooltip() {
@@ -43,43 +51,47 @@ class Hotels {
     }
 
     /**
+     * this function sets the active classes on a row (and on the ones after) on click,
+     * previously set classes are deleted on every row before adding the new ones
      * @private
      */
     setActiveRow() {
-        $(".hotels-table tr").on('click', function (e) {
-            $(".hotels-table tr").removeClass();
+        const row = $(".hotels-table tr");
+        row.on('click', function (e) {
+            row.removeClass();
             $(this).addClass('active-row').nextAll().addClass('rows-after');
         });
         $('.hotels-table-container').on('focusout', function () {
-            $(".hotels-table tr").removeClass();
+            row.removeClass();
         });
     }
 
     /**
+     * function builds hotels table and adds corresponding classes to the elements
+     * already-existing hotels table gets removed before the new table is built
      * @private
      */
     createHotelsTable(hotels, city) {
-        if ($('.hotels-table')) {
-            $('.hotels-table').remove();
+        const hotelsTable = $('.hotels-table');
+        if (hotelsTable.length > 0) {
+            hotelsTable.remove();
         }
-        const tbl = $('<table>')
-            .addClass('hotels-table');
-        const tblBody = $('<tbody>');
+        const table = $('<table>').addClass('hotels-table'),
+            tableBody = $('<tbody>');
         hotels.forEach((item, index) => {
             const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">')
                     .customTooltip(),
-                hotelName = $('<h4 data-toggle="modal" data-target="#modal-map-div">')
-                    .text(item.name)
+                hotelName = $('<h4 data-toggle="modal" data-target="#modal-map-div">').text(item.name)
                     .on('click', () => {
                         this.customMap.addAllMarkers([item]);
                     }),
                 nameCell = $('<td>').html(hotelName),
                 imgCell = $('<td>').html('<img src="' + item.imageUrl + '">');
             row.append(nameCell, imgCell);
-            tblBody.append(row);
+            tableBody.append(row);
         });
-        tbl.append(tblBody);
-        $('.hotels-table-container').append(tbl);
+        table.append(tableBody);
+        $('.hotels-table-container').append(table);
         this.setActiveRow();
     }
 }

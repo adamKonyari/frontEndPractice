@@ -1,75 +1,79 @@
 class Search {
     constructor() {
-        this.options = {
-            cities: []
-        }
+        this.init();
     }
 
     /**
-     * @public
+     * @private
      */
     init() {
+        this.cities = [];
         this.initSearch();
     }
 
     /**
+     * cities are loaded from an external json resource with jQuery ajax
      * @private
      */
     initSearch() {
         $.ajax({
-            type: 'GET',
-            url: 'http://localhost:3000/cities',
-            dataType: 'json',
-            success: (data) => {
-                this.options.cities = data;
-                const cityNames = [];
-                for (let i = 0; i < data.length; i++) {
-                    if (typeof data[i] !== "undefined" && typeof data[i].name !== "undefined") {
-                        cityNames.push(data[i].name);
+                type: 'GET',
+                url: 'http://localhost:3000/cities',
+                dataType: 'json',
+                success: (data) => {
+                    this.cities = data;
+                    const cityNames = [];
+                    for (let i = 0; i < data.length; i++) {
+                        if (typeof data[i] !== "undefined" && typeof data[i].name !== "undefined") {
+                            cityNames.push(data[i].name);
+                        }
                     }
+                    this.initTypeahead(cityNames);
+                },
+                error: () => {
+                    console.log('An error occurred while loading the cities!');
                 }
-                this.initTypeahead(cityNames);
             }
-        }
         );
     }
 
     /**
+     * typeahead gets initialized on every row in the hotels table
+     * typeahead content is the city's name where the hotel is found
      * @private
      * @param cityNames
      */
     initTypeahead(cityNames) {
-        let city_suggestions = new Bloodhound({
+        const city_suggestions = new Bloodhound({
             datumTokenizer: Bloodhound.tokenizers.whitespace,
             queryTokenizer: Bloodhound.tokenizers.whitespace,
             local: cityNames
         });
-        $('#my_search')
-            .typeahead({
+        $('#my_search').typeahead({
                 hint: true,
                 highlight: true,
                 minLength: 1
             },
-                {
-                    name: 'cities',
-                    source: city_suggestions
-                })
+            {
+                name: 'cities',
+                source: city_suggestions
+            })
             .on('typeahead:selected', function () {
                 $('.city-input-form').submit();
             });
     }
 
     /**
-     * @param city
+     * function returns an array of hotels based on the city
+     * @param cityName
      * @returns {Array}
      * @public
      */
-    getHotels(city) {
-        const cities = this.options.cities;
+    getHotels(cityName) {
         let hotels = [];
-        cities.forEach((item, index) => {
-            if (item.name === city) {
-                hotels = item.hotels;
+        this.cities.forEach((city, index) => {
+            if (city.name === cityName) {
+                hotels = city.hotels;
                 return;
             }
         });
@@ -77,17 +81,15 @@ class Search {
     }
 
     /**
+     * function returns the coordinates of a single hotel based on the name
      * @public
      */
-    getCoordinates(hotels, name) {
-        let coordinates = {};
+    getCoordinates(hotels, hotelName) {
         for (let i = 0; i < hotels.length; i++) {
             const hotel = hotels[i];
-            if (hotel.name === name) {
-                let coordinates = hotel.coordinates;
-                break;
+            if (hotel.name === hotelName) {
+                return hotel.coordinates;
             }
         }
-        return coordinates;
     }
 }

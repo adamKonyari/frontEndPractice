@@ -1,21 +1,27 @@
 class Subscribe {
     constructor() {
+        this.init();
     }
 
+    /**
+     * @private
+     */
     init() {
         this.initSubscribe();
     }
 
+    /**
+     * @private
+     */
     initSubscribe() {
         this.initCustomModal();
         this.initSubscribeForm();
     }
 
     /**
-     * extend syantax:
-     * $.fn.myPlugin = $.extend(true, $.fn.originalPlugin, myplugin)
+     * this function initializes the extended modal plugin
+     * @private
      */
-
     initCustomModal() {
         (function ($) {
             const modal = $.fn.modal;
@@ -28,15 +34,6 @@ class Subscribe {
             };
         }(jQuery));
 
-        // (function ($) {
-        //     const custommodal = function() {
-        //         console.log('custom called');
-        //         this.css('color', 'green');
-        //     }
-        //     $.fn.customModal = $.extend(true, $.fn.modal, custommodal);
-        //
-        // }(jQuery));
-
         $('#subscribe-modal-link').on('click', () => {
             $('#modal-subscribe-div').customModal({
                 color: 'green'
@@ -44,8 +41,12 @@ class Subscribe {
         });
     }
 
+    /**
+     * subscription form gets initialized in this function
+     * validation, success and error handling are also implemented here
+     * @private
+     */
     initSubscribeForm() {
-        //add validation to the subscribe form
         $("#subscribe-form")
             .validate({
                 rules: {
@@ -61,7 +62,6 @@ class Subscribe {
                         required: true
                     }
                 },
-
                 submitHandler: (form) => {
                     $.ajax({
                         url: 'http://localhost:3001/subscribers',
@@ -71,6 +71,7 @@ class Subscribe {
                         success: () => {
                             console.log('subscriber saved');
                             $('#modal-subscribe-div').modal('toggle');
+                            form.reset();
                         },
                         error: () => {
                             console.log('error');
