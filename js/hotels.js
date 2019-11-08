@@ -76,11 +76,10 @@ class Hotels {
         if (hotelsTable.length > 0) {
             hotelsTable.remove();
         }
-        const table = $('<table>').addClass('hotels-table'),
+        const table = $('<table>').addClass('hotels-table table-stripped'),
             tableBody = $('<tbody>');
         hotels.forEach((item, index) => {
-            const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">')
-                    .customTooltip(),
+            const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">').customTooltip(),
                 hotelName = $('<h4 data-toggle="modal" data-target="#modal-map-div">').text(item.name)
                     .on('click', () => {
                         this.customMap.addAllMarkers([item]);

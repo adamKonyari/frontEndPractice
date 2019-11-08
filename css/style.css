@@ -2,6 +2,10 @@
     padding-top: 60px;
 }
 
+#my_search {
+    width: 300px;
+}
+
 .search-container {
     width: 200 px;
 }
@@ -78,6 +82,11 @@
     transform: rotate(40deg) scale(1.5);
 }
 
-#my_search {
-    width: 300px;
+.oddRow {
+    background-color: lightblue;
 }
+
+.evenRow {
+    background-color: lightgoldenrodyellow;
+}
+
