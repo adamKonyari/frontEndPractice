@@ -1,6 +1,5 @@
 class Search {
     constructor() {
-
         this.init();
     }
 
@@ -92,5 +91,9 @@ class Search {
                 return hotel.coordinates;
             }
         }
+    }
+
+    getCities() {
+        return this.cities;
     }
 }

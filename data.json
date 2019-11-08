@@ -103,7 +103,21 @@
         {
           "id": 1,
           "name": "Hilltop",
-          "imageUrl": "https://i.szalas.hu/hotels/458598/original/28101994.jpg"
+          "imageUrl": "https://i.szalas.hu/hotels/458598/original/28101994.jpg",
+          "prizes": [
+            {
+              "value": 3,
+              "person": 2
+            },
+            {
+              "value": 2,
+              "person": 3
+            },
+            {
+              "value": 4,
+              "person": 2
+            }
+          ]
         }
       ]
     },
@@ -119,7 +133,21 @@
           "coordinates": {
             "lat": 48.093275,
             "lng": 20.785454
-          }
+          },
+          "prizes": [
+            {
+              "value": 3,
+              "person": 2
+            },
+            {
+              "value": 2,
+              "person": 3
+            },
+            {
+              "value": 4,
+              "person": 2
+            }
+          ]
         }
       ]
     },
@@ -131,7 +159,21 @@
         {
           "id": 1,
           "name": "Hotel Sopron",
-          "imageUrl": "https://hotelsopron.hu/application/files/5915/0519/9884/hotel-sopron-galeria-hotel-kulso-medence-palya.jpg"
+          "imageUrl": "https://hotelsopron.hu/application/files/5915/0519/9884/hotel-sopron-galeria-hotel-kulso-medence-palya.jpg",
+          "prizes": [
+            {
+              "value": 3,
+              "person": 2
+            },
+            {
+              "value": 2,
+              "person": 3
+            },
+            {
+              "value": 4,
+              "person": 2
+            }
+          ]
         }
       ]
     }
