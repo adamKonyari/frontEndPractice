@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Front End Practice</title>
 
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -27,14 +29,11 @@
     <script src="js/index.js"></script>
 </head>
 
-<body data-spy="scroll" data-target="#navbar-main">
-    <nav id="navbar-main" class="navbar navbar-default navbar-fixed-top">
-        <ul class="nav nav-pills nav-justified">
+<body>
+    <nav id="navbar-main" class="navbar navbar-inverse navbar-fixed-top">
+        <ul class="nav navbar-nav">
             <li class="active">
                 <a data-toggle="pill" href="#home" class="">Home</a>
-            </li>
-            <li>
-                <a data-toggle="pill" href="#search" class="">Search</a>
             </li>
             <li>
                 <a data-toggle="pill" href="#subscribe" class="">Subscribe</a>
@@ -43,22 +42,22 @@
                 <a data-toggle="pill" href="#gallery" class="">Gallery</a>
             </li>
             <li>
-                <a data-toggle="pill" href="#data-tabkes" class="">Data Tables</a>
+                <a data-toggle="pill" href="#data-tables" class="">Data Tables</a>
             </li>
         </ul>
     </nav>
-    <hr>
-    <hr>
-    <div id="main-div container-fluid" id="tabs">
-        <div class="search-container container-fluid tab-pane fade" id="search">
-            <h4 id="search">Search</h4>
+    <div id="main-div" class="container-fluid tab-content">
+        <div class="flex search-container container-fluid tab-pane fade in active" id="home">
+            <button id="map-modal-link" data-toggle="modal" data-target="#modal-map-div" class="btn btn-primary">
+                CITY MAP
+            </button>
+            <hr>
             <form class="city-input-form" autocomplete="off">
-                <input type="text" id="my_search" name="search" class="city-search form-control">
-                <input type="submit" value="GO">
+                <input type="text" id="my_search" name="search" class="city-search form-control pull-left">
+                <input type="submit" value="GO" class="btn btn-default">
             </form>
             <hr>
             <div class="hotels-table-container" tabindex="-1"></div>
-            <hr>
             <!-- MODAL BEGIN -->
             <div class="modal" id="modal-map-div">
                 <div class="modal-dialog">
@@ -78,12 +77,8 @@
                 </div>
             </div>
             <!-- MODAL END -->
-            <button id="map-modal-link" data-toggle="modal" data-target="#modal-map-div" class="btn btn-primary">
-                CITY MAP
-            </button>
         </div>
         <div class="subscribe-container container-fluid tab-pane fade" id="subscribe">
-            <h4 id="subscribe">Hírlevél</h4>
             <button id="subscribe-modal-link" class="btn btn-primary"
                 data-target="#modal-subscribe-div">SUBSCRIBE</button>
             <!-- MODAL BEGIN -->
@@ -124,7 +119,6 @@
             <!-- MODAL END -->
         </div>
         <div class="gallery-container container-fluid col-xs-6 tab-pane fade" id="gallery">
-            <h4>Gallery</h4>
             <div class="gallery-div">
             </div>
         </div>

@@ -1,3 +1,11 @@
+#main-div {
+    padding-top: 60px;
+}
+
+.search-container {
+    width: 200 px;
+}
+
 .hotels-table-container table {
     width: 50%;
 }
@@ -28,7 +36,7 @@
     background-color: lightblue;
 }
 
-div#map {
+#map {
     width: 100%;
     height: 400px;
 }
@@ -68,4 +76,8 @@ div#map {
 .rotate-right:hover {
     transition: transform .3s;
     transform: rotate(40deg) scale(1.5);
+}
+
+#my_search {
+    width: 300px;
 }

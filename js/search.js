@@ -1,5 +1,6 @@
 class Search {
     constructor() {
+
         this.init();
     }
 
@@ -17,23 +18,23 @@ class Search {
      */
     initSearch() {
         $.ajax({
-                type: 'GET',
-                url: 'http://localhost:3000/cities',
-                dataType: 'json',
-                success: (data) => {
-                    this.cities = data;
-                    const cityNames = [];
-                    for (let i = 0; i < data.length; i++) {
-                        if (typeof data[i] !== "undefined" && typeof data[i].name !== "undefined") {
-                            cityNames.push(data[i].name);
-                        }
+            type: 'GET',
+            url: 'http://localhost:3000/cities',
+            dataType: 'json',
+            success: (data) => {
+                this.cities = data;
+                const cityNames = [];
+                for (let i = 0; i < data.length; i++) {
+                    if (typeof data[i] !== "undefined" && typeof data[i].name !== "undefined") {
+                        cityNames.push(data[i].name);
                     }
-                    this.initTypeahead(cityNames);
-                },
-                error: () => {
-                    console.log('An error occurred while loading the cities!');
                 }
+                this.initTypeahead(cityNames);
+            },
+            error: () => {
+                console.log('An error occurred while loading the cities!');
             }
+        }
         );
     }
 
@@ -50,10 +51,10 @@ class Search {
             local: cityNames
         });
         $('#my_search').typeahead({
-                hint: true,
-                highlight: true,
-                minLength: 1
-            },
+            hint: true,
+            highlight: true,
+            minLength: 1
+        },
             {
                 name: 'cities',
                 source: city_suggestions
