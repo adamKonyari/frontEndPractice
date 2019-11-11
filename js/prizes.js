@@ -72,7 +72,7 @@ class Prizes {
         return `
         <table>
             <tr>
-                <button class='btn btn-default'>HOTEL</button>
+                <button data-toggle='modal' data-target="#modal-map-div" class='btn btn-default'>HOTEL</button>
             </tr>
         </table>
         `

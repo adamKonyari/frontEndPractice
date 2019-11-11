@@ -63,7 +63,6 @@ class CustomMap {
                 map: map,
                 icon: baseUrl + firstChar + '.png'
             });
-        // map.setCenter(marker.getPosition());
         this.markers.push(marker);
     }
 
@@ -88,7 +87,8 @@ class CustomMap {
             bounds.extend(this.markers[i].getPosition());
         }
         google.maps.event.addListenerOnce(map, 'idle', function () {
-            map.fitBounds(bounds);
+            map.fitBounds(bounds, 0);
         });
+        map.fitBounds(bounds, 0);
     }
 }

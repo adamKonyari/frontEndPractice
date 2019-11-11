@@ -28,7 +28,7 @@ class Hotels {
             if (hotels.length !== 0) {
                 this.initCustomTooltip();
                 this.createHotelsTable(hotels, city);
-                $('#modal-map-div').on('show.bs.modal', city => {
+                $('#map-modal-link').on('click', city => {
                     this.customMap.addAllMarkers(hotels);
                 });
             }
