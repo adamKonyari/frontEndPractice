@@ -104,6 +104,10 @@
           "id": 1,
           "name": "Centrum Hotel",
           "imageUrl": "https://i.szalas.hu/hotels/458598/original/28101994.jpg",
+          "coordinates": {
+            "lat": 47.532846,
+            "lng": 21.625239
+          },
           "prizes": [
             {
               "value": 3,
@@ -160,6 +164,10 @@
           "id": 1,
           "name": "Hotel Sopron",
           "imageUrl": "https://hotelsopron.hu/application/files/5915/0519/9884/hotel-sopron-galeria-hotel-kulso-medence-palya.jpg",
+          "coordinates": {
+            "lat": 47.693269,
+            "lng": 16.593910
+          },
           "prizes": [
             {
               "value": 3,

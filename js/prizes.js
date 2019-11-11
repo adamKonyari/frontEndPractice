@@ -4,7 +4,9 @@ class Prizes {
     }
 
     init() {
-        this.initPrizes()
+        this.initPrizes();
+        this.search = new Search();
+        this.customMap = new CustomMap(this.search);
     }
 
     initPrizes() {
@@ -45,17 +47,19 @@ class Prizes {
     }
 
     buildDataTable(cities) {
+        this.hotels = [];
         for (let i = 0; i < cities.length; i++) {
             const city = cities[i];
             for (let j = 0; j < city.hotels.length; j++) {
                 const hotel = city.hotels[j];
+                this.hotels.push(hotel);
                 for (let k = 0; k < hotel.prizes.length; k++) {
                     const prize = hotel.prizes[k];
                     let valueText = '';
                     for (let m = 0; m < prize.value; m++) {
                         valueText += '$';
                     }
-                    const row = $('<tr>'),
+                    const row = $('<tr>').data('hotel', hotel),
                         emptyCell = $('<td>').css('cursor', 'pointer'),
                         cityNameCell = $('<td>').html('<h4>' + city.name + '</h4>'),
                         hotelNameCell = $('<td>').html('<h4>' + hotel.name + '</h4>'),
@@ -68,11 +72,12 @@ class Prizes {
         }
     }
 
-    format() {
+    format(hotel) {
+        $("<button data-toggle='modal' data-target='#modal-map-div' class='btn btn-default dt-map-modal-link'>")
         return `
         <table>
             <tr>
-                <button data-toggle='modal' data-target="#modal-map-div" class='btn btn-default'>HOTEL</button>
+                <button data-toggle="modal" data-target="#modal-map-div" class='btn btn-default dt-map-modal-link'>HOTEL</button>
             </tr>
         </table>
         `
@@ -88,9 +93,12 @@ class Prizes {
                 tr.removeClass('shown');
             }
             else {
-                row.child(self.format()).show();
-                tr.addClass('shown');
+                row.child(self.format(tr.data('hotel'))).show();
+                tr.addClass('shown');   
             }
+            $('.dt-map-modal-link').on('click', () => {
+                self.customMap.addAllMarkers([tr.data('hotel')]);        
+            });
         });
     }
 }
