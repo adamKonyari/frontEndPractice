@@ -82,11 +82,15 @@
     transform: rotate(40deg) scale(1.5);
 }
 
-.oddRow {
+.prize-table tr:nth-child(2n) {
+    background-color: gainsboro;
+}
+
+
+.prize-table tr:nth-child(5n):nth-child(odd) {
     background-color: lightblue;
 }
 
-.evenRow {
-    background-color: lightgoldenrodyellow;
+.prize-table tr:nth-child(5n):nth-child(even) {
+    background-color: lightyellow;
 }
-

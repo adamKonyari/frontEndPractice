@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
 
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/jqery.dataTAbles.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/typeaheadjs.css">
 
     <script src="js/lib/jquery-3.4.1.js"></script>
@@ -27,6 +28,7 @@
     <script src="js/prizes.js"></script>
     <script src="js/index.js"></script>
 </head>
+
 <body>
     <nav id="navbar-main" class="navbar navbar-inverse navbar-fixed-top">
         <ul class="nav navbar-nav">
@@ -40,7 +42,7 @@
                 <a data-toggle="pill" href="#gallery" class="">Gallery</a>
             </li>
             <li>
-                <a data-toggle="pill" href="#data-tables" class="">Data Tables</a>
+                <a data-toggle="pill" href="#data-tables" class="">Prizes</a>
             </li>
         </ul>
     </nav>
@@ -123,12 +125,24 @@
         <div class="data-tables-container container-fluid tab-pane fade" id="data-tables">
             <div class="row">
                 <div class="col-md-8">
-                    <table class="prize-table table text-center display">
+                    <table class="prize-table table text-center">
                         <thead>
-                            <td><h2>City</h2></td>
-                            <td><h2>Hotel</h2></td>
-                            <td><h2>Persons</h2></td>
-                            <td><h2>Value</h2></td>
+                            <tr>
+                                <td>
+                                </td>
+                                <td>
+                                    <h2>City</h2>
+                                </td>
+                                <td>
+                                    <h2>Hotel</h2>
+                                </td>
+                                <td>
+                                    <h2>Persons</h2>
+                                </td>
+                                <td>
+                                    <h2>Value</h2>
+                                </td>
+                            </tr>
                         </thead>
                         <tbody>
                         </tbody>
@@ -138,4 +152,5 @@
         </div>
     </div>
 </body>
+
 </html>
