@@ -26,6 +26,10 @@ class Prizes {
      * @private
      */
     initDataTable() {
+        let langUrl = '';
+        if (navigator.language === 'hu') {
+            langUrl = 'js/lib/hu_HU.json';
+        }
         $.ajax({
             type: 'GET',
             url: 'http://localhost:3000/cities',
@@ -46,6 +50,9 @@ class Prizes {
                         null
                     ],
                     'order': [[4, 'desc']],
+                    'language': {
+                        url: langUrl
+                    } 
                 });
                 this.initRowDetails(table);
             },
