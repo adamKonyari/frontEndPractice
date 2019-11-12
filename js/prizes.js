@@ -3,18 +3,27 @@ class Prizes {
         this.init();
     }
 
+    /**
+     * fields of the class are initialized here
+     * @private
+     */
     init() {
         this.initPrizes();
         this.search = new Search();
         this.customMap = new CustomMap(this.search);
     }
-
+    /**
+     * @private
+     */
     initPrizes() {
         this.initDataTable();
     }
 
     /**
-     * todo: initialize table events
+     * after a GET request returns the list of cities
+     * a DataTable gets initialized
+     * then it gets filled with data from the list of cities
+     * @private
      */
     initDataTable() {
         $.ajax({
@@ -46,6 +55,11 @@ class Prizes {
         });
     }
 
+    /**
+     * prizes are getting extracted from the list of cities (and hotels)
+     * then the prize-table is filled with the data (and corresponding cells) accordingly
+     * @private 
+     */
     buildDataTable(cities) {
         this.hotels = [];
         for (let i = 0; i < cities.length; i++) {
@@ -72,17 +86,27 @@ class Prizes {
         }
     }
 
+    /**
+     * this function returns a button which gets added to the extra info-row in the table
+     * when the button gets clicked, the map will with the marker of the corresponding hotel
+     * @private 
+     */
     format(hotel) {
-        $("<button data-toggle='modal' data-target='#modal-map-div' class='btn btn-default dt-map-modal-link'>")
-        return `
-        <table>
-            <tr>
-                <button data-toggle="modal" data-target="#modal-map-div" class='btn btn-default dt-map-modal-link'>HOTEL</button>
-            </tr>
-        </table>
-        `
+        const button = $("<button/>", {
+            text: hotel.name,
+            click: () => { this.customMap.addAllMarkers([hotel]) }
+        }).attr({
+            'data-toggle': 'modal',
+            'data-target': '#modal-map-div'
+        })
+            .addClass('btn btn-default')
+        return button;
     }
-
+    /**
+     * this function is responsible for initializing the row with the extra hotel button,
+     * when the "+" signed is clicked in a row
+     * @private 
+     */
     initRowDetails(table) {
         const self = this;
         $('.prize-table').on('click', '.details-control', function () {
@@ -90,15 +114,12 @@ class Prizes {
                 row = table.row(tr);
             if (row.child.isShown()) {
                 row.child.hide();
-                tr.removeClass('shown');
+                tr.toggleClass('shown');
             }
             else {
                 row.child(self.format(tr.data('hotel'))).show();
-                tr.addClass('shown');   
+                tr.toggleClass('shown');
             }
-            $('.dt-map-modal-link').on('click', () => {
-                self.customMap.addAllMarkers([tr.data('hotel')]);        
-            });
         });
     }
 }
