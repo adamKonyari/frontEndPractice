@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
     <link rel="stylesheet" href="css/typeaheadjs.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
     <script src="js/lib/jquery-3.4.1.js"></script>
     <script src="js/lib/bloodhound.js"></script>
@@ -18,6 +19,7 @@
     <script src="js/lib/bootstrap.js"></script>
     <script src="js/lib/jquery.validate.js"></script>
     <script src="js/lib/dataTables.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <script src="js/test.js"></script>
     <script src="js/search.js"></script>
@@ -26,6 +28,7 @@
     <script src="js/subscribe.js"></script>
     <script src="js/gallery.js"></script>
     <script src="js/prizes.js"></script>
+    <script src="js/dates.js"></script>
     <script src="js/index.js"></script>
 </head>
 
@@ -39,10 +42,13 @@
                 <a data-toggle="pill" href="#subscribe" class="">Subscribe</a>
             </li>
             <li>
-                <a data-toggle="pill" href="#gallery" class="">Gallery</a>
+                <a data-toggle="pill" href="#recommendation" class="">Recommendation</a>
             </li>
             <li>
                 <a data-toggle="pill" href="#data-tables" class="">Prizes</a>
+            </li>
+            <li>
+                <a data-toggle="pill" href="#dates" class="">Dates</a>
             </li>
         </ul>
     </nav>
@@ -58,7 +64,7 @@
             </form>
             <hr>
             <div class="hotels-table-container" tabindex="-1"></div>
-           
+
         </div>
         <div class="subscribe-container container-fluid tab-pane fade" id="subscribe">
             <button id="subscribe-modal-link" class="btn btn-primary"
@@ -100,7 +106,7 @@
             </div>
             <!-- MODAL END -->
         </div>
-        <div class="gallery-container container-fluid col-xs-6 tab-pane fade" id="gallery">
+        <div class="gallery-container container-fluid col-xs-6 tab-pane fade" id="recommendation">
             <div class="gallery-div">
             </div>
         </div>
@@ -132,10 +138,20 @@
                 </div>
             </div>
         </div>
+        <div class="date-picker-container container-fluid tab-pane fade col-md6" id="dates" data-provide="datepicker">
+            <div class="input-group date" data-provide="datepicker">
+                <input type="text" class="form-control datepicker arrival date-picker" placeholder="Date of Arrival">
+                <div class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </div>
+            </div>
+
+            <input type="text" class="datepicker departure" placeholder="Date of Departure">
+        </div>
     </div>
     <!-- MODALS BEGIN -->
-     <!-- MAP MODAL -->
-     <div class="modal" id="modal-map-div">
+    <!-- MAP MODAL -->
+    <div class="modal" id="modal-map-div">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

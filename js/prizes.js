@@ -52,7 +52,7 @@ class Prizes {
                     'order': [[4, 'desc']],
                     'language': {
                         url: langUrl
-                    } 
+                    }
                 });
                 this.initRowDetails(table);
             },
@@ -68,12 +68,10 @@ class Prizes {
      * @private 
      */
     buildDataTable(cities) {
-        this.hotels = [];
         for (let i = 0; i < cities.length; i++) {
             const city = cities[i];
             for (let j = 0; j < city.hotels.length; j++) {
                 const hotel = city.hotels[j];
-                this.hotels.push(hotel);
                 for (let k = 0; k < hotel.prizes.length; k++) {
                     const prize = hotel.prizes[k];
                     let valueText = '';
@@ -99,13 +97,20 @@ class Prizes {
      * @private 
      */
     format(hotel) {
-        const button = $("<button/>", {
+        const button = $("<button>", {
             text: hotel.name,
-            click: () => { this.customMap.addAllMarkers([hotel]) }
-        }).attr({
-            'data-toggle': 'modal',
-            'data-target': '#modal-map-div'
+            click: () => {
+                this.customMap.addAllMarkers([hotel]);  
+            }
         })
+            .attr({
+                'data-toggle': 'modal',
+                'data-target': '#modal-map-div'
+            })
+            // .data({
+            //     toggle: 'modal',
+            //     target: '#modal-map-div'
+            // })
             .addClass('btn btn-default')
         return button;
     }

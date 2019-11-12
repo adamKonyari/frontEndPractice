@@ -16,6 +16,7 @@ class Index {
         this.hotels = new Hotels(this.search, this.customMap);
         this.subscribe = new Subscribe();
         this.prizes = new Prizes();
+        this.dates = new Dates();
         this.initIndex();
     }
 
