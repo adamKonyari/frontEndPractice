@@ -10,8 +10,12 @@
     width: 200 px;
 }
 
+.hotels-table-container {
+    width: 600px;
+}
+
 .hotels-table-container table {
-    width: 50%;
+    width: 100%;
 }
 
 .hotels-table-container img {
@@ -22,7 +26,6 @@
 
 .hotels-table-container td {
     text-align: center;
-    width: 40%;
     border: 1px solid black;
     border-collapse: collapse;
     cursor: pointer;
@@ -30,6 +33,10 @@
 
 .hotels-table-container:focus {
     outline: 0;
+}
+
+.hotels-table td:nth-child(2) {
+    width: 200px;
 }
 
 .active-row {
@@ -63,7 +70,7 @@
     margin: auto;
 }
 
-.gallery-container {
+.recommendation-container {
     width: 690px;
 }
 
@@ -93,4 +100,19 @@
 
 .prize-table tr:nth-child(5n):nth-child(even) {
     background-color: lightyellow;
+}
+
+.ui-datepicker-calendar td:nth-child(7) a {
+    background-color: red;
+}
+
+div.photoSwipe_innerthumbs {
+    position: fixed; bottom: 0; width: 100%; text-align: center;z-index: 1000000;
+}
+div.photoSwipe_innerthumbs img {
+    max-width: 100px; cursor: pointer;
+}
+
+.svifaded {
+    opacity: 0.5;
 }

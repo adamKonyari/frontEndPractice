@@ -17,6 +17,7 @@ class Index {
         this.subscribe = new Subscribe();
         this.prizes = new Prizes();
         this.dates = new Dates();
+        this.photos = new Photos();
         this.initIndex();
     }
 

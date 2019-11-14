@@ -107,10 +107,6 @@ class Prizes {
                 'data-toggle': 'modal',
                 'data-target': '#modal-map-div'
             })
-            // .data({
-            //     toggle: 'modal',
-            //     target: '#modal-map-div'
-            // })
             .addClass('btn btn-default')
         return button;
     }
