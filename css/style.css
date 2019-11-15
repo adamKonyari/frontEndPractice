@@ -107,10 +107,17 @@
 }
 
 div.photoSwipe_innerthumbs {
-    position: fixed; bottom: 0; width: 100%; text-align: center;z-index: 1000000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align:
+    center;z-index: 1000000;
+    height: 100px;
 }
 div.photoSwipe_innerthumbs img {
-    max-width: 100px; cursor: pointer;
+    max-width: 100px; 
+    max-height: 100px;
+    cursor: pointer;
 }
 
 .svifaded {
