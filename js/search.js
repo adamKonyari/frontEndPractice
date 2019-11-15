@@ -7,7 +7,6 @@ class Search {
      * @private
      */
     init() {
-        this.cities = [];
         this.initSearch();
     }
 
@@ -81,7 +80,7 @@ class Search {
     }
 
     /**
-     * function returns the coordinates of a single hotel based on the name
+     * function returns the coordinates of a single hotel based on the name of the hotel
      * @public
      */
     getCoordinates(hotels, hotelName) {
