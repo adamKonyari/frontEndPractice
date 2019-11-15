@@ -114,6 +114,7 @@ div.photoSwipe_innerthumbs {
     center;z-index: 1000000;
     height: 100px;
 }
+
 div.photoSwipe_innerthumbs img {
     max-width: 100px; 
     max-height: 100px;
@@ -122,4 +123,12 @@ div.photoSwipe_innerthumbs img {
 
 .svifaded {
     opacity: 0.5;
+}
+
+.photoSwipe_imgTitle {
+    position: absolute,
+}
+
+.gallery_container img {
+    position: relative
 }
