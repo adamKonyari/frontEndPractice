@@ -7,13 +7,6 @@ class Gallery {
      * @private
      */
     init() {
-        this.initGallery();
-    }
-
-    /**
-     * @private
-     */
-    initGallery() {
         this.fillGallery();
     }
 
@@ -25,15 +18,31 @@ class Gallery {
      */
     fillGallery() {
         const galleryDiv = $('.gallery-div');
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 204; i++) {
             const width = Math.floor((Math.random() * 300) + 200),
                 height = Math.floor((Math.random() * 300) + 200),
                 src = 'http://placekitten.com/' + width + '/' + height,
-                img = $('<img>').attr('src', src),
+                img = $('<img class="lazy">'),
                 div = $('<div>').addClass('col-xs-3 img-container');
+            if (i < 15) {
+                img.attr('src', src);
+            } else {
+                img.attr('data-src', src);
+            }
             div.append(img);
             galleryDiv.append(div);
         }
+
+        $('.lazy').Lazy({
+            scrollDirection: 'vertical',
+            effect: 'fadeIn',            
+            effectTime: 2000,
+            visibleOnly: true,
+            afterLoad: (element) => {
+                console.log('image loaded')
+            }
+        });
+
         galleryDiv.find('div:nth-child(3n+1) img').addClass('boxed-img rotate-left');
         galleryDiv.find('div:nth-child(3n+2) img').addClass('boxed-img zoom');
         galleryDiv.find('div:nth-child(3n+3) img').addClass('boxed-img rotate-right');

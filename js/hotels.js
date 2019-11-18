@@ -5,7 +5,7 @@ class Hotels {
 
     /**
      * @private
-     * @param search
+     * @param object search
      * @param customMap
      */
     init(search, customMap) {
@@ -79,8 +79,10 @@ class Hotels {
         const table = $('<table>').addClass('hotels-table table-hover'),
             tableBody = $('<tbody>');
         hotels.forEach((item, index) => {
-            const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">').customTooltip(),
-                hotelName = $('<h2 data-toggle="modal" data-target="#modal-map-div">').text(item.name)
+            const row = $('<tr data-toggle="tooltip" data-placement="right" title="' + city + '">')
+                    .customTooltip(),
+                hotelName = $('<h2 data-toggle="modal" data-target="#modal-map-div">')
+                    .text(item.name)
                     .on('click', () => {
                         this.customMap.addAllMarkers([item]);
                     }),

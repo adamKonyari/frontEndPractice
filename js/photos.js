@@ -24,23 +24,34 @@ class Photos {
      * @private
      */
     openPhotoSwipe() {
-        const pswpElement = document.querySelectorAll('.pswp')[0];
-        $('.gallery-container').append('<div class="photoSwipe_innerthumbs"></div>', ); // div for the inner thumbnails
+        const pswpElement = document.querySelector('.pswp');
+        $('.gallery-container').append(
+            `<div class="thumbnail_container">
+                <div class='leftArrow'></div>
+                <div class='viewContainer'>
+                    <div class="photoSwipe_innerthumbs">
+                    </div>
+                </div>
+                <div class='rightArrow'>
+                </div>
+            </div>`
+        ); // div for the inner thumbnails
 
         const options = {
             index: 0, // start at first slide
             preload: [1, 1], // only 1 image is preloaded in both direction
-            modal: false
+            modal: false,
+            closeOnScroll: false
         };
 
         const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, this.items, options);
         gallery.init();
         $('.pswp__bg').append(`<div class="pswp__imgTitle"><h1>${gallery.currItem.title}</h1></div>`)
-        
+
         // Gallery starts closing
         gallery.listen('close', function () {
             $('.photoSwipe_innerthumbs').remove();
-            $('.photoSwipe_imgTitle').remove();
+            $('.pswp__imgTitle').remove();
         });
 
         gallery.listen('afterChange', function () {
@@ -50,11 +61,20 @@ class Photos {
             $('.pswp__bg').append(`<div class="pswp__imgTitle"><h1>${gallery.currItem.title}</h1></div>`)
         });
 
-        //Create thumbnail images
+        //Creating thumbnail images
         for (let i = 0; i < this.items.length; i++) {
             const item = this.items[i];
-            $("div.photoSwipe_innerthumbs").append($('<img>').attr('src', item.src));
+            $("div.photoSwipe_innerthumbs").append($('<img class="lazy-thumbnail">').attr('data-src', item.src));
         }
+
+        $('.lazy-thumbnail').Lazy({
+            scrollDirection: 'vertical',
+            visibleOnly: true,
+            afterLoad: (element) => {
+                console.log('image loaded')
+            },
+            defaultImage: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Question_mark_white_icon.svg/240px-Question_mark_white_icon.svg.png'
+        });
 
         //Get current active index and add class to thumb just to fade a bit
         $("div.photoSwipe_innerthumbs img").eq(gallery.getCurrentIndex()).addClass('svifaded');
@@ -65,23 +85,28 @@ class Photos {
             $(this).addClass('svifaded');
             gallery.goTo($("div.photoSwipe_innerthumbs img").index($(this)));
         });
+
+        var view = $(".thumbnail_container");
+        var move = "100px";
+        var sliderLimit = -750
+
     }
 
     /**
+     * This function builds an array of items which gets later passed to the new PhotoSwipe instance
      * @private 
      */
     buildItemsArray() {
         const items = [];
-        for (let i = 0; i < 20; i++) {
+        for (let i = 0; i < 25; i++) {
             const width = Math.floor((Math.random() * 720) + 560),
                 height = Math.floor((Math.random() * 720) + 560),
                 imgSrc = 'http://placekitten.com/' + width + '/' + height;
             items.push({
-                html: `<h2>Cat # + ${i}</h2>`,
                 src: imgSrc,
                 w: width,
                 h: height,
-                title: 'Cat #' + (i+1)
+                title: 'Cat #' + (i + 1)
             });
         }
         return items;

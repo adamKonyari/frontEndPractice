@@ -102,6 +102,10 @@
     background-color: lightyellow;
 }
 
+.ui-datepicker-calendar td:nth-child(7) span {
+    background-color: red;
+}
+
 .ui-datepicker-calendar td:nth-child(7) a {
     background-color: red;
 }
@@ -113,6 +117,8 @@ div.photoSwipe_innerthumbs {
     text-align:
     center;z-index: 1000000;
     height: 100px;
+    left: 0;
+    overflow: auto
 }
 
 div.photoSwipe_innerthumbs img {
@@ -132,10 +138,9 @@ div.photoSwipe_innerthumbs img {
     text-align: center
 }
 
-.gallery_container img {
-    position: relative
+.pswp__img {
+    margin-top: 2%
 }
 
-.pswp__img {
-    margin-top: 2%;
-}
+
+

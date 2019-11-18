@@ -17,6 +17,9 @@ class Dates {
         this.initArrivalDeparture();
     }
 
+    /**
+    * @private
+    */
     initArrivalDeparture() {
         this.initHunLocale();
 
@@ -29,10 +32,9 @@ class Dates {
             buttonText: 'Open calendar',
             onSelect: () => {
                 if (departure.val() <= arrival.val() && departure.val() !== '') {
-                    const date = arrival.datepicker('getDate').getDate() + 1,
-                        month = arrival.datepicker('getDate').getMonth() + 1,
-                        year = arrival.datepicker('getDate').getFullYear()
-                    departure.val(`${year}-${month}-${date}`);
+                    const date = arrival.datepicker('getDate', '+1d');
+                    date.setDate(date.getDate() + 1);
+                    departure.datepicker('setDate', date);
                 }
             },
         });
@@ -46,15 +48,17 @@ class Dates {
             buttonText: 'Open calendar',
             onSelect: () => {
                 if (arrival.val() >= departure.val()) {
-                    const date = departure.datepicker('getDate').getDate() - 1,
-                        month = departure.datepicker('getDate').getMonth() + 1,
-                        year = departure.datepicker('getDate').getFullYear()
-                    arrival.val(`${year}-${month}-${date}`);
+                    const date = departure.datepicker('getDate', '-1d');
+                    date.setDate(date.getDate() - 1);
+                    arrival.datepicker('setDate', date);
                 }
             }
         });
     }
 
+    /**
+    * @private
+    */
     initHunLocale() {
         /* Hungarian initialisation for the jQuery UI date picker plugin. */
         (function (factory) {
