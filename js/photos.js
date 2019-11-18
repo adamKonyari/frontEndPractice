@@ -30,24 +30,24 @@ class Photos {
         const options = {
             index: 0, // start at first slide
             preload: [1, 1], // only 1 image is preloaded in both direction
-            bgOpacity: 0.5,
             modal: false
         };
 
         const gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, this.items, options);
         gallery.init();
-        $('.gallery-container').append(`<div class="photoSwipe_imgTitle"><h1>${gallery.currItem.title}</h1></div>`)
-
+        $('.pswp__bg').append(`<div class="pswp__imgTitle"><h1>${gallery.currItem.title}</h1></div>`)
+        
         // Gallery starts closing
         gallery.listen('close', function () {
             $('.photoSwipe_innerthumbs').remove();
             $('.photoSwipe_imgTitle').remove();
         });
-        gallery.listen('beforeChange', function () {
-            if ($('.photoSwipe_imgTitle')) {
-                $('.photoSwipe_imgTitle').remove()
+
+        gallery.listen('afterChange', function () {
+            if ($('.pswp__imgTitle')) {
+                $('.pswp__imgTitle').remove()
             }
-            $('.pswp__img').append(`<div class="photoSwipe_imgTitle"><h1>${gallery.currItem.title}</h1></div>`)
+            $('.pswp__bg').append(`<div class="pswp__imgTitle"><h1>${gallery.currItem.title}</h1></div>`)
         });
 
         //Create thumbnail images
@@ -72,11 +72,12 @@ class Photos {
      */
     buildItemsArray() {
         const items = [];
-        for (let i = 0; i < 50; i++) {
-            const width = Math.floor((Math.random() * 1080) + 840),
-                height = Math.floor((Math.random() * 1080) + 840),
+        for (let i = 0; i < 20; i++) {
+            const width = Math.floor((Math.random() * 720) + 560),
+                height = Math.floor((Math.random() * 720) + 560),
                 imgSrc = 'http://placekitten.com/' + width + '/' + height;
             items.push({
+                html: `<h2>Cat # + ${i}</h2>`,
                 src: imgSrc,
                 w: width,
                 h: height,

@@ -125,10 +125,17 @@ div.photoSwipe_innerthumbs img {
     opacity: 0.5;
 }
 
-.photoSwipe_imgTitle {
-    position: absolute,
+.pswp__imgTitle {
+    margin: 0 auto;
+    color: white;
+    width: 100%;
+    text-align: center
 }
 
 .gallery_container img {
     position: relative
+}
+
+.pswp__img {
+    margin-top: 2%;
 }
