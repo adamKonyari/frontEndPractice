@@ -47,4 +47,5 @@ class Gallery {
         galleryDiv.find('div:nth-child(3n+2) img').addClass('boxed-img zoom');
         galleryDiv.find('div:nth-child(3n+3) img').addClass('boxed-img rotate-right');
     }
+
 }   

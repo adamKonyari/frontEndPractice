@@ -93,7 +93,6 @@
     background-color: gainsboro;
 }
 
-
 .prize-table tr:nth-child(5n):nth-child(odd) {
     background-color: lightblue;
 }
@@ -114,15 +113,14 @@ div.photoSwipe_innerthumbs {
     position: fixed;
     bottom: 0;
     width: 100%;
-    text-align:
-    center;z-index: 1000000;
+    text-align: center;
+    z-index: 1000000;
     height: 100px;
     left: 0;
-    overflow: auto
 }
 
 div.photoSwipe_innerthumbs img {
-    max-width: 100px; 
+    max-width: 100px;
     max-height: 100px;
     cursor: pointer;
 }
@@ -142,5 +140,47 @@ div.photoSwipe_innerthumbs img {
     margin-top: 2%
 }
 
+#outer {
+    float: left;
+    width: 89%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    margin-left: 4%;
+}
 
+#left-button {
+    float: left;
+    width: 30px;
+    text-align: center;
+}
 
+#right-button {
+    float: left;
+    width: 30px;
+    text-align: center;
+}
+
+#inner:first-child {
+    margin-left: 0;
+}
+
+.hide {
+    display: none;
+}
+
+.thumbnail-container {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.lazy-thumbnail {
+    width: 100px;
+    height: 100px
+}
+
+.pswp-modal-body {
+    height: 500px;
+    position: relative;
+}
