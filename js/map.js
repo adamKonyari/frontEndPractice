@@ -1,3 +1,10 @@
+const mapOptions = {
+    zoom: 13,
+    center: { lat: 47.49801, lng: 19.03991 }
+};
+
+const apiKey = 'AIzaSyCgrqknZaEazBqklkTFuigqSYsaoIUFoV8';
+
 class CustomMap {
 
     constructor(search) {
@@ -9,10 +16,6 @@ class CustomMap {
      * @public
      */
     init() {
-        const mapOptions = {
-            zoom: 13,
-            center: {lat: 47.49801, lng: 19.03991}
-        };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
     }
 
@@ -27,8 +30,8 @@ class CustomMap {
         }
         window.map = null;
         const script_tag = document.createElement('script');
-        script_tag.setAttribute("type", "text/javascript");
-        script_tag.setAttribute("src", "https://maps.googleapis.com/maps/api/js?key=AIzaSyCgrqknZaEazBqklkTFuigqSYsaoIUFoV8&callback=gMapsCallback");
+        script_tag.setAttribute('type', 'text/javascript');
+        script_tag.setAttribute('src', `https://maps.googleapis.com/maps/api/js?key=${apiKey}&callback=gMapsCallback`);
         (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
     }
 

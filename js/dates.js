@@ -28,7 +28,7 @@ class Dates {
             minDate: new Date(),
             showAnim: 'slideDown',
             showOn: "button",
-            buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+            buttonImage: 'http://jqueryui.com/resources/demos/datepicker/images/calendar.gif',
             buttonText: 'Open calendar',
             onSelect: () => {
                 if (departure.val() <= arrival.val() && departure.val() !== '') {
@@ -44,7 +44,7 @@ class Dates {
             minDate: new Date(new Date().getTime() + 24 * 60 * 60 * 1000),
             showAnim: 'slideDown',
             showOn: "button",
-            buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif",
+            buttonImage: 'http://jqueryui.com/resources/demos/datepicker/images/calendar.gif',
             buttonText: 'Open calendar',
             onSelect: () => {
                 if (arrival.val() >= departure.val()) {

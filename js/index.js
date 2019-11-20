@@ -26,7 +26,7 @@ class Index {
      * @private
      */
     initIndex() {
-        $(window).bind('gMapsLoaded', this.customMap.init);
+        $(window).on('gMapsLoaded', this.customMap.init);
         this.customMap.loadGoogleMaps();
     }
 }
